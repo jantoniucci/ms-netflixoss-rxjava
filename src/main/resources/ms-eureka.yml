@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: eureka
+  datasource:
+    initialize: false
+  cloud:
+    config:
+      failFast: true
+
+server:
+  port: ${PORT:8761}
+        
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    enableSelfPreservation: true
+#   waitTimeInMsWhenSyncEmpty: 0
+
+logging:
+#   file: /var/memento/security.log
+    level:
+        org.springframework.web: 'DEBUG'

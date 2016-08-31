@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: bookrating-microservice
+
+server:
+  port: 9998
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  
+bookService:
+  getBookoBasicInfo:
+    delay: 200
+  getBookoRating:
+    delay: 200
+  
+logging:
+#   file: /var/memento/security.log
+  level:
+    org.springframework.web: 'DEBUG'

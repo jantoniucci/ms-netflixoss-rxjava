@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: zuul
+  cloud:
+    config:
+      failFast: true
+
+server:
+  port: ${PORT:8080}
+
+zuul:
+  eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+      healthcheck:
+        enabled: true
+  routes:
+    bookapi-microservice:
+      path: /api/books/**
+      stripPrefix: false
+      serviceId: bookapi-microservice
+
+logging:
+#   file: /var/memento/security.log
+    level:
+        org.springframework.web: 'DEBUG'
